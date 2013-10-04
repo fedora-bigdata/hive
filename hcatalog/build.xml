@@ -64,7 +64,7 @@
     Build all jars
     ================================================================================
     -->
-    <target name="jar" depends="init" description="build all jars">
+    <target name="jar" description="build all jars">
         <ant target="jar" dir="core" inheritAll="false">
           <property name="_mvn.hadoop.profile" value="${mvn.hadoop.profile}"/>
         </ant>
@@ -234,7 +234,7 @@
                  noqualifier="all"
                  windowtitle="HCatalog ${hcatalog.version} API"
                  doctitle="HCatalog ${hcatalog.version} API"
-                 failonerror="true"
+                 failonerror="false">
                  useexternalfile="yes">
             <packageset dir="core/src/main/java"/>
             <packageset dir="hcatalog-pig-adapter/src/main/java"/>
@@ -244,12 +244,20 @@
             <packageset dir="webhcat/svr/src/main/java"/>
             <packageset dir="webhcat/java-client/src/main/java"/>
             <classpath>
+                <fileset dir="../build/ivy/lib/default"/>
+                <fileset dir="../build/ivy/lib/hadoop0.23.shim/"/>
+                <fileset dir="../build/hbase-handler/"/>
                 <fileset dir="core/build/lib/compile"/>
+                <fileset dir="core/build/lib/provided"/>
+                <fileset dir="core/build/lib/test"/>
                 <fileset dir="hcatalog-pig-adapter/build/lib/compile" includes="pig*.jar"/>
+                <fileset dir="hcatalog-pig-adapter/build/lib/provided"/>
                 <fileset dir="server-extensions/build/lib/compile" includes="jms*.jar"/>
+                <fileset dir="server-extensions/build/lib/provided"/>
                 <fileset dir="storage-handlers/hbase/build/lib/compile" includes="hbase*.jar,hive-hbase*.jar"/>
-                <fileset dir="webhcat/svr/build/lib/provided" includes="hcatalog-core*.jar"/>
+                <fileset dir="storage-handlers/hbase/build/lib/provided"/>
                 <fileset dir="webhcat/svr/build/lib/compile" includes="jetty*.jar,jersey*.jar,commons-exec*.jar,jul-to-slf4j*.jar"/>
+                <fileset dir="webhcat/svr/build/lib/provided" includes="hcatalog-core*.jar"/>
             </classpath>
             <group title="hcatalog" packages="org.apache.hive.hcatalog.*"/>
         </javadoc>
@@ -259,7 +267,6 @@
                 <contains text="warnings"/>
             </isfileselected>
         </condition>
-        <fail if="javadoc.warnings">Javadoc comments contain warnings.</fail>
     </target>
 
     <!--
@@ -357,7 +364,6 @@
                 <include name="webhcat-java-client*.jar"/>
             </fileset>
         </copy>
-
         <copy todir="${dist.dir}/bin">
             <fileset dir="bin/">
                 <include name="hcat"/>

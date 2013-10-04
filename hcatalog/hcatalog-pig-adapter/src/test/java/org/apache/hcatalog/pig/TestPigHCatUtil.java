@@ -35,6 +35,7 @@ import org.junit.Test;
  */
 public class TestPigHCatUtil {
 
+<<<<<<< HEAD
   @Test
   public void testGetBagSubSchema() throws Exception {
 

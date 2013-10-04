@@ -23,6 +23,7 @@
 
     <property name="path.to.basedir" location="${basedir}/../.."/>
     <loadproperties srcfile="${path.to.basedir}/build.properties"/>
+    <property name="hive.root" value="${basedir}/../../.."/>
 
     <!--
     ================================================================================
@@ -68,6 +69,9 @@
 
     <path id="compile.class.path">
       <fileset dir="${build.dir}/lib/compile"/>
+      <fileset dir="${hive.root}/build/ivy/lib" includes="**/*.jar" />
+      <dirset dir="${path.to.basedir}/core/build/classes"/>
+      <dirset dir="${hive.root}/build/hbase-handler/classes"/>
     </path>
 
     <path id="test.class.path">
