@@ -31,15 +31,13 @@
     <dependency org="org.apache.hbase" name="hbase" rev="${hbase.version}"
                 transitive="false">
       <artifact name="hbase" type="jar"/>
-      <artifact name="hbase" type="test-jar" ext="jar"
-                m:classifier="tests"/>
     </dependency>
-    <dependency org="com.github.stephenc.high-scale-lib" name="high-scale-lib" rev="1.1.1"
+    <dependency org="high-scale-lib" name="high-scale-lib" rev="${highscalelib.version}"
                 transitive="false"/>
-    <dependency org="com.yammer.metrics" name="metrics-core" rev="${metrics-core.version}">
+    <dependency org="metrics" name="metrics-core" rev="${metrics-core.version}">
       <exclude org="org.slf4j" module="slf4j-api"/><!--causes a dual slf4j presence otherwise-->
     </dependency>
-    <dependency org="org.codehaus.jackson" name="jackson-jaxrs" rev="${jackson.version}"/>
-    <dependency org="org.codehaus.jackson" name="jackson-xc" rev="${jackson.version}"/>
+    <dependency org="jackson" name="jackson-jaxrs" rev="${jackson.version}"/>
+    <dependency org="jackson" name="jackson-xc" rev="${jackson.version}"/>
   </dependencies>
 </ivy-module>
