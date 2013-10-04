@@ -220,7 +220,7 @@
           <exclude name="META-INF/MANIFEST.MF"/>
       </patternset>
     </unzip>
-    <unzip src="${build.ivy.lib.dir}/default/json-${json.version}.jar" dest="${build.dir.hive}/json/classes">
+    <unzip src="${build.ivy.lib.dir}/default/jettison-${jettison.version}.jar" dest="${build.dir.hive}/json/classes">
       <patternset>
           <exclude name="META-INF"/>
           <exclude name="META-INF/MANIFEST.MF"/>
@@ -250,8 +250,9 @@
         <exclude name="META-INF/MANIFEST.MF"/>
       </patternset>
     </unzip>
-    <unzip
-      src="${build.ivy.lib.dir}/default/protobuf-java-${protobuf.version}.jar"
+
+    <unzip 
+      src="${build.ivy.lib.dir}/default/protobuf-${protobuf.version}.jar" 
       dest="${build.dir.hive}/protobuf-java/classes">
       <patternset>
         <exclude name="META-INF"/>
@@ -267,8 +268,8 @@
       </patternset>
     </unzip>
 
-    <unzip
-      src="${build.ivy.lib.dir}/default/snappy-${snappy.version}.jar" 
+    <unzip 
+      src="${build.ivy.lib.dir}/default/snappy-java-${snappy.version}.jar" 
       dest="${build.dir.hive}/snappy/classes">
       <patternset>
         <exclude name="META-INF"/>

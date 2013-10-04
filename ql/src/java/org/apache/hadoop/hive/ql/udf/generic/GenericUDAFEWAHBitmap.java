@@ -20,7 +20,7 @@ package org.apache.hadoop.hive.ql.udf.generic;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javaewah.EWAHCompressedBitmap;
+import com.googlecode.javaewah.EWAHCompressedBitmap;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
