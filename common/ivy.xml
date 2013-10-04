@@ -27,14 +27,14 @@
     <include file="${ivy.conf.dir}/common-configurations.xml"/>
   </configurations>
   <dependencies>
-    <dependency org="org.apache.hadoop" name="hadoop-auth"
+    <dependency org="hadoop" name="hadoop-auth"
                 rev="${hadoop-0.23.version}"
                 conf="hadoop23.compile->default" transitive="false">
       <include type="jar"/>
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
     </dependency>
-    <dependency org="org.apache.avro" name="avro" rev="${avro.version}"
+    <dependency org="avro" name="avro" rev="${avro.version}"
                 conf="hadoop23.compile->default" transitive="false" />
 
     <dependency org="org.apache.hive" name="hive-shims" rev="${version}"
@@ -44,5 +44,12 @@
     <dependency org="commons-lang" name="commons-lang" rev="${commons-lang.version}"/>
     <dependency org="log4j" name="log4j" rev="${log4j.version}"
                 transitive="false"/>
+    <dependency org="geronimo-jms" name="jms" rev="${jms.version}"/>
+    <dependency org="commons-exec" name="commons-exec" rev="${commons-exec.version}"/>
+    <dependency org="javax.ws.rs" name="jsr-311" rev="${jsr311.version}"/>
+    <dependency org="jersey" name="jersey-server" rev="${jersey.version}"/>
+    <dependency org="jersey" name="jersey-servlet" rev="${jersey.version}"/>
+    <dependency org="jetty" name="jetty-rewrite" rev="${jetty.version}"/>
+    <dependency org="slf4j" name="jul-to-slf4j" rev="${slf4j-api.version}"/>
   </dependencies>
 </ivy-module>
