@@ -25,6 +25,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.EnumSet;
+
+import javax.servlet.DispatcherType;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -157,19 +160,19 @@ public class Main {
          * callbacks. So jetty would fail the request as unauthorized.
          */ 
         root.addFilter(fHolder, "/" + SERVLET_PATH + "/v1/ddl/*", 
-                       FilterMapping.REQUEST);
+                       EnumSet.of(DispatcherType.REQUEST));
         root.addFilter(fHolder, "/" + SERVLET_PATH + "/v1/pig/*", 
-                       FilterMapping.REQUEST);
+                       EnumSet.of(DispatcherType.REQUEST));
         root.addFilter(fHolder, "/" + SERVLET_PATH + "/v1/hive/*", 
-                       FilterMapping.REQUEST);
+                       EnumSet.of(DispatcherType.REQUEST));
         root.addFilter(fHolder, "/" + SERVLET_PATH + "/v1/queue/*", 
-                       FilterMapping.REQUEST);
+                       EnumSet.of(DispatcherType.REQUEST));
         root.addFilter(fHolder, "/" + SERVLET_PATH + "/v1/mapreduce/*", 
-                       FilterMapping.REQUEST);
+                       EnumSet.of(DispatcherType.REQUEST));
         root.addFilter(fHolder, "/" + SERVLET_PATH + "/v1/status/*", 
-                       FilterMapping.REQUEST);
+                       EnumSet.of(DispatcherType.REQUEST));
         root.addFilter(fHolder, "/" + SERVLET_PATH + "/v1/version/*", 
-                       FilterMapping.REQUEST);
+                       EnumSet.of(DispatcherType.REQUEST));
 
         // Connect Jersey
         ServletHolder h = new ServletHolder(new ServletContainer(makeJerseyConfig()));

@@ -20,10 +20,12 @@
 
 <project name="shims" default="jar">
   <property name="path.to.basedir" value="${basedir}/.."/>
+  <property name="hive.root" value="${basedir}/../.."/>
   <import file="${path.to.basedir}/build-support/ant/build-common.xml"/>
 
   <path id="compile.class.path">
     <fileset dir="${path.to.basedir}/core/build/lib/compile"/>
+    <fileset dir="${hive.root}/build/ivy/lib" includes="**/*.jar" />
   </path>
 
   <target name="jar">
