@@ -26,9 +26,9 @@
     <include file="${ivy.conf.dir}/common-configurations.xml"/>
   </configurations>
   <dependencies>
-    <dependency org="org.antlr" name="antlr" rev="${antlr.version}" transitive="false"/>
-    <dependency org="org.antlr" name="antlr-runtime" rev="${antlr-runtime.version}" transitive="false"/>
-    <dependency org="org.antlr" name="ST4" rev="${ST4.version}" transitive="false"/><!-- manually added (antlr dep), bad POM -->
+    <dependency org="org.antlr" name="antlr3" rev="${antlr.version}" transitive="false"/>
+    <dependency org="org.antlr" name="antlr3-runtime" rev="${antlr-runtime.version}" transitive="false"/>
+    <dependency org="org.antlr" name="stringtemplate4" rev="${ST4.version}" transitive="false"/>
     <dependency org="org.apache.hive" name="hive-serde" rev="${version}"
                 conf="compile->default" />
     <dependency org="commons-dbcp" name="commons-dbcp" rev="${commons-dbcp.version}">
@@ -36,19 +36,16 @@
       <exclude org="org.apache.geronimo.specs" module="geronimo-jta_1.1_spec"/>
     </dependency>
     <dependency org="commons-pool" name="commons-pool" rev="${commons-pool.version}"/>
-    <dependency org="org.datanucleus" name="datanucleus-api-jdo" rev="${datanucleus-api-jdo.version}">
-        <exclude org="javax.jdo" module="jdo2-api"/>
-        <exclude org="junit" module="junit"/>
-        <exclude org="log4j" module="log4j"/>
-    </dependency>
     <dependency org="org.datanucleus" name="datanucleus-core" rev="${datanucleus-core.version}"
                 transitive="false"/>
     <dependency org="org.datanucleus" name="datanucleus-rdbms" rev="${datanucleus-rdbms.version}"
                 transitive="false"/>
-    <dependency org="javax.jdo" name="jdo2-api" rev="${jdo-api.version}"
+    <dependency org="org.datanucleus" name="datanucleus-api-jdo" rev="${datanucleus-api-jdo.version}"
+                 transitive="false"/>
+    <dependency org="javax.jdo" name="jdo-api" rev="${jdo-api.version}"
                 transitive="false"/>
-    <dependency org="org.apache.derby" name="derby" rev="${derby.version}"/>
-    <dependency org="asm" name="asm" rev="${asm.version}"/>
+    <dependency org="derby" name="derby" rev="${derby.version}"/>
+    <dependency org="objectweb-asm" name="asm" rev="${asm.version}"/>
 
   </dependencies>
 </ivy-module>
