@@ -33,7 +33,8 @@
   <property name="repo.maven.org" value="http://repo1.maven.org/maven2/" override="false"/>
   <property name="snapshot.apache.org" value="https://repository.apache.org/content/repositories/snapshots/" override="false"/>
   <property name="maven2.pattern" value="[organisation]/[module]/[revision]/[module]-[revision](-[classifier])"/>
-  <property name="repo.dir" value="${user.home}/.m2/repository" override="false"/>
+  <property name="repo.dir.share" value="/usr/share/java" override="false"/>
+  <property name="repo.dir.lib" value="/usr/lib/java" override="false"/>
   <property name="maven2.pattern.ext"  value="${maven2.pattern}.[ext]"/>
   <property name="sourceforge-repo" value="http://www.sourceforge.net/projects"/>
   <property name="resolvers" value="default" override="false"/>
@@ -42,46 +43,38 @@
   <settings defaultResolver="${resolvers}"/>
 
   <resolvers>
-    <ibiblio name="maven2" root="${repo.maven.org}" pattern="${maven2.pattern.ext}" m2compatible="true"/>
-    <ibiblio name="apache-snapshot" root="${snapshot.apache.org}" m2compatible="true"
-             checkmodified="${ivy.checkmodified}" 
-             changingPattern="${ivy.changingPattern}"/>
-
-    <url name="datanucleus-repo" m2compatible="true">
-      <artifact pattern="${datanucleus.repo}/[organisation]/[module]/[revision]/[module]-[revision](-[classifier]).[ext]"/>
-    </url>
-
-    <url name="sourceforge" m2compatible="false" checksums="">
-      <artifact pattern="${sourceforge-repo}/[module]/files/[module]/[branch]/[module]-[revision](-[classifier]).[ext]"/>
-    </url>
-
-    <filesystem name="fs" m2compatible="true" alwaysCheckExactRevision="true">
-       <artifact pattern="${repo.dir}/[organisation]/[module]/[revision]/[module]-[revision](-[classifier]).[ext]"/>
-       <ivy pattern="${repo.dir}/[organisation]/[module]/[revision]/[module]-[revision](-[classifier]).pom"/>
+    <filesystem name="fedora1" m2compatible="false" alwaysCheckExactRevision="false">
+       <artifact pattern="${repo.dir.share}/[module](-[classifier]).[ext]"/>
     </filesystem>
 
-    <chain name="default" dual="true" returnFirst="true" 
-           checkmodified="${ivy.checkmodified}" 
-           changingPattern="${ivy.changingPattern}">
-      <resolver ref="local" />
-      <resolver ref="apache-snapshot"/>
-      <resolver ref="maven2"/>
-      <resolver ref="datanucleus-repo"/>
-      <resolver ref="sourceforge"/>
-    </chain>
+    <filesystem name="fedora2" m2compatible="false" alwaysCheckExactRevision="false">
+       <artifact pattern="${repo.dir.share}/[organization]/[module](-[classifier]).[ext]"/>
+    </filesystem>
 
-    <chain name="internal" dual="true">
-      <resolver ref="local" />
-      <resolver ref="fs"/>
-      <resolver ref="apache-snapshot"/>
-      <resolver ref="maven2"/>
-      <resolver ref="datanucleus-repo"/>
-      <resolver ref="sourceforge"/>
-    </chain>
+    <filesystem name="fedora3" m2compatible="false" alwaysCheckExactRevision="false">
+       <artifact pattern="${repo.dir.lib}/[module](-[classifier]).[ext]"/>
+    </filesystem>
 
-    <chain name="external">
-      <resolver ref="maven2"/>
-      <resolver ref="datanucleus-repo"/>
+    <filesystem name="fedora4" m2compatible="false" alwaysCheckExactRevision="false">
+       <artifact pattern="${repo.dir.lib}/[organization]/[module](-[classifier]).[ext]"/>
+    </filesystem>
+
+    <filesystem name="build" m2compatible="false" alwaysCheckExactRevision="false">
+       <artifact pattern="${build.dir.hive}/shims/[module]-[revision](-[classifier]).[ext]"/>
+       <artifact pattern="${build.dir.hive}/common/[module]-[revision](-[classifier]).[ext]"/>
+       <artifact pattern="${build.dir.hive}/serde/[module]-[revision](-[classifier]).[ext]"/>
+       <artifact pattern="${build.dir.hive}/metastore/[module]-[revision](-[classifier]).[ext]"/>
+       <artifact pattern="${build.dir.hive}/ql/[module]-[revision](-[classifier]).[ext]"/>
+       <artifact pattern="${build.dir.hive}/service/[module]-[revision](-[classifier]).[ext]"/>
+       <artifact pattern="${build.dir.hive}/cli/[module]-[revision](-[classifier]).[ext]"/>
+    </filesystem>
+
+    <chain name="default" dual="true">
+      <resolver ref="fedora1"/>
+      <resolver ref="fedora2"/>
+      <resolver ref="fedora3"/>
+      <resolver ref="fedora4"/>
+      <resolver ref="build"/>
     </chain>
 
   </resolvers>

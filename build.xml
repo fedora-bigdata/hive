@@ -230,7 +230,6 @@
   <target name="ivy-download" depends="ivy-init-dirs"
           description="To download ivy" unless="offline">
     <echo message="Project: ${ant.project.name}"/>
-    <get src="${ivy_repo_url}" dest="${ivy.jar}" usetimestamp="true"/>
   </target>
   
   <!--
