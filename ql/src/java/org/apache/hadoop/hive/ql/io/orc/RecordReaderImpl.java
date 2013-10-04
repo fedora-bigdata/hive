@@ -793,9 +793,7 @@ class RecordReaderImpl implements RecordReader {
     void seek(PositionProvider[] index) throws IOException {
       super.seek(index);
       for(TreeReader kid: fields) {
-        if (kid != null) {
-          kid.seek(index);
-        }
+        kid.seek(index);
       }
     }
 
@@ -841,9 +839,7 @@ class RecordReaderImpl implements RecordReader {
     void skipRows(long items) throws IOException {
       items = countNonNulls(items);
       for(TreeReader field: fields) {
-        if (field != null) {
-          field.skipRows(items);
-        }
+        field.skipRows(items);
       }
     }
   }
@@ -1313,7 +1309,7 @@ class RecordReaderImpl implements RecordReader {
       readStripe();
     }
     readRowIndex();
-    rowInStripe = rowNumber - rowBaseInStripe - firstRow;
+    rowInStripe = rowNumber - rowBaseInStripe;
     if (rowIndexStride != 0) {
       long entry = rowInStripe / rowIndexStride;
       seekToRowEntry((int) entry);
