@@ -28,23 +28,32 @@
   </configurations>
   <dependencies>
     <!-- General dependencies. -->
-    <dependency org="org.apache.zookeeper" name="zookeeper"
+    <dependency org="zookeeper" name="zookeeper"
                 rev="${zookeeper.version}" transitive="false">
       <include type="jar"/>
     </dependency>
-    <dependency org="org.apache.thrift" name="libthrift" rev="${libthrift.version}"
+    <dependency org="thrift" name="libthrift" rev="${libthrift.version}"
                 transitive="false"/>
     <dependency org="commons-logging" name="commons-logging" rev="${commons-logging.version}"
                 transitive="false"/>
     <dependency org="commons-logging" name="commons-logging-api" rev="${commons-logging-api.version}"
                 transitive="false"/>
-    <dependency org="org.codehaus.jackson" name="jackson-core-asl" rev="${jackson.version}"/>
-    <dependency org="org.codehaus.jackson" name="jackson-mapper-asl" rev="${jackson.version}"/>
+    <dependency org="jackson" name="jackson-core-asl" rev="${jackson.version}"/>
+    <dependency org="jackson" name="jackson-mapper-asl" rev="${jackson.version}"/>
     <dependency org="log4j" name="log4j" rev="${log4j.version}" />
-    <dependency org="com.google.guava" name="guava" rev="${guava.version}" transitive="false"/>
+    <dependency org="guava" name="guava" rev="${guava.version}" transitive="false"/>
+    <dependency org="commons-codec" name="commons-codec" rev="${commons-codec.version}"
+                transitive="false"/>
+    <dependency org="slf4j" name="slf4j-api" rev="${slf4j-api.version}" />
+    <dependency org="jetty" name="jetty-server" rev="${jetty.version}" />
+    <dependency org="jetty" name="jetty-webapp" rev="${jetty.version}" />
+    <dependency org="jetty" name="jetty-util" rev="${jetty.version}" />
+    <dependency org="jetty" name="jetty-annotations" rev="${jetty.version}" />
+    <dependency org="jetty" name="jetty-servlet" rev="${jetty.version}" />
+    <dependency org="glassfish" name="glassfish-servlet-api" rev="${servlet-api.version}" />
 
     <!-- Hadoop 0.23 dependencies. Used both for shims and for building against Hadoop 0.23. -->
-    <dependency org="org.apache.hadoop" name="hadoop-common"
+    <dependency org="hadoop" name="hadoop-common"
                 rev="${hadoop-0.23.version}"
                 conf="hadoop0.23.shim->default">
       <artifact name="hadoop-common" ext="jar" />
@@ -52,21 +61,21 @@
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
     </dependency>
-    <dependency org="org.apache.hadoop" name="hadoop-mapreduce-client-core"
+    <dependency org="hadoop" name="hadoop-mapreduce-client-core"
                 rev="${hadoop-0.23.version}"
                 conf="hadoop0.23.shim->default">
       <include type="jar"/>
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
     </dependency>
-    <dependency org="org.apache.hadoop" name="hadoop-archives"
+    <dependency org="hadoop" name="hadoop-archives"
                 rev="${hadoop-0.23.version}"
                 conf="hadoop0.23.shim->default">
       <include type="jar"/>
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
     </dependency>
-    <dependency org="org.apache.hadoop" name="hadoop-hdfs"
+    <dependency org="hadoop" name="hadoop-hdfs"
                 rev="${hadoop-0.23.version}"
                 conf="hadoop0.23.shim->default">
       <artifact name="hadoop-hdfs" ext="jar" />
@@ -74,7 +83,7 @@
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
     </dependency>
-    <dependency org="org.apache.hadoop" name="hadoop-mapreduce-client-jobclient"
+    <dependency org="hadoop" name="hadoop-mapreduce-client-jobclient"
                 rev="${hadoop-0.23.version}"
                 conf="hadoop0.23.shim->default">
       <artifact name="hadoop-mapreduce-client-jobclient" ext="jar" />
@@ -82,7 +91,7 @@
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
     </dependency>
-    <dependency org="org.apache.hadoop" name="hadoop-mapreduce-client-common"
+    <dependency org="hadoop" name="hadoop-mapreduce-client-common"
                 rev="${hadoop-0.23.version}"
                 conf="hadoop0.23.shim->default">
       <include type="jar"/>
@@ -91,28 +100,36 @@
     </dependency>
 
     <!-- jobclient tests dependency -->
-    <dependency org="org.apache.hadoop" name="hadoop-mapreduce-client-jobclient" rev="${hadoop-0.23.version}"
+    <dependency org="hadoop" name="hadoop-mapreduce-client-jobclient" rev="${hadoop-0.23.version}"
                 conf="hadoop0.23.shim->default" transitive="false">
       <artifact name="hadoop-mapreduce-client-jobclient" ext="jar" />
       <artifact name="hadoop-mapreduce-client-jobclient" type="tests" ext="jar" m:classifier="tests"/>
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
     </dependency>
-    <dependency org="org.apache.hadoop" name="hadoop-yarn-server-tests"
+    <dependency org="hadoop" name="hadoop-yarn-server-tests"
                 rev="${hadoop-0.23.version}"
                 conf="hadoop0.23.shim->default">
       <artifact name="hadoop-yarn-server-tests" type="tests" ext="jar" m:classifier="tests"/>
-      <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
-      <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
+      <exclude org="commons-daemon" module="commons-daemon"/>
+      <exclude org="org.apache.commons" module="commons-daemon"/>
     </dependency>
-    <dependency org="org.apache.hadoop" name="hadoop-mapreduce-client-app"
+    <dependency org="hadoop" name="hadoop-mapreduce-client-app"
                 rev="${hadoop-0.23.version}"
                 conf="hadoop0.23.shim->default">
       <include type="jar"/>
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
     </dependency>
-    <dependency org="org.apache.hadoop" name="hadoop-mapreduce-client-hs"
+    <dependency org="hadoop" name="hadoop-mapreduce-client-hs"
+                rev="${hadoop-0.23.version}"
+                conf="hadoop0.23.shim->default">
+      <include type="jar"/>
+      <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
+      <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
+    </dependency>
+
+    <dependency org="hadoop" name="hadoop-annotations"
                 rev="${hadoop-0.23.version}"
                 conf="hadoop0.23.shim->default">
       <include type="jar"/>
@@ -171,6 +188,9 @@
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
     </dependency>
+
+    <!-- Pig Dependencies -->
+    <dependency org="pig" name="pig" rev="${pig.version}" conf="hadoop0.23.shim->default" />
 
     <!-- Test Dependencies -->
     <dependency org="junit" name="junit" rev="${junit.version}" conf="test->default" />
