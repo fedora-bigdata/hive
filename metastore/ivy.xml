@@ -31,9 +31,6 @@
     <dependency org="org.antlr" name="stringtemplate4" rev="${ST4.version}" transitive="false"/>
     <dependency org="org.apache.hive" name="hive-serde" rev="${version}"
                 conf="compile->default" />
-    <dependency org="com.jolbox" name="bonecp" rev="${BoneCP.version}">
-        <exclude org="com.google.guava" module="guava"/>
-    </dependency>
 
     <dependency org="commons-pool" name="commons-pool" rev="${commons-pool.version}"/>
     <dependency org="org.datanucleus" name="datanucleus-core" rev="${datanucleus-core.version}"
