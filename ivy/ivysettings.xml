@@ -69,12 +69,17 @@
        <artifact pattern="${build.dir.hive}/cli/[module]-[revision](-[classifier]).[ext]"/>
     </filesystem>
 
+    <filesystem name="missing" m2compatible="false" alwaysCheckExactRevision="false">
+       <artifact pattern="${user.home}/hive/lib/missing/[module]-[revision](-[classifier]).[ext]"/>
+    </filesystem>
+
     <chain name="default" dual="true">
       <resolver ref="fedora1"/>
       <resolver ref="fedora2"/>
       <resolver ref="fedora3"/>
       <resolver ref="fedora4"/>
       <resolver ref="build"/>
+      <resolver ref="missing"/>
     </chain>
 
   </resolvers>

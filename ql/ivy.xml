@@ -54,6 +54,7 @@
     <dependency org="commons-configuration" name="commons-configuration" rev="${commons-configuration.version}"
                 transitive="false"/>
     <dependency org="commons-io" name="commons-io" rev="${commons-io.version}"/>
+    <dependency org="commons-httpclient" name="commons-httpclient" rev="${commons-httpclient.version}"/>
     <dependency org="javaewah" name="JavaEWAH" rev="${javaewah.version}"/>
     <dependency org="javolution" name="javolution" rev="${javolution.version}"/>
 

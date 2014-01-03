@@ -50,6 +50,7 @@
     <dependency org="jersey" name="jersey-server" rev="${jersey.version}"/>
     <dependency org="jersey" name="jersey-servlet" rev="${jersey.version}"/>
     <dependency org="jetty" name="jetty-rewrite" rev="${jetty.version}"/>
+    <dependency org="jetty" name="jetty-http" rev="${jetty.version}"/>
     <dependency org="slf4j" name="jul-to-slf4j" rev="${slf4j-api.version}"/>
   </dependencies>
 </ivy-module>

@@ -95,6 +95,12 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-http</artifactId>
+            <version>${jetty.webhcat.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>com.sun.jersey.contribs</groupId>
             <artifactId>wadl-resourcedoc-doclet</artifactId>
             <version>${wadl-resourcedoc-doclet.version}</version>

@@ -26,10 +26,10 @@ import org.apache.hive.service.cli.CLIService;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocolFactory;
 import org.apache.thrift.server.TServlet;
-import org.mortbay.jetty.nio.SelectChannelConnector;
-import org.mortbay.jetty.servlet.Context;
-import org.mortbay.jetty.servlet.ServletHolder;
-import org.mortbay.thread.QueuedThreadPool;
+import org.eclipse.jetty.server.ServerConnector;
+import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
+import org.eclipse.jetty.util.thread.QueuedThreadPool;
 
 
 public class ThriftHttpCLIService extends ThriftCLIService {
@@ -75,13 +75,11 @@ public class ThriftHttpCLIService extends ThriftCLIService {
         }
       }
 
-      httpServer = new org.mortbay.jetty.Server();
-
       QueuedThreadPool threadPool = new QueuedThreadPool();
       threadPool.setMinThreads(minWorkerThreads);
       threadPool.setMaxThreads(maxWorkerThreads);
-      httpServer.setThreadPool(threadPool);
-      SelectChannelConnector connector = new SelectChannelConnector();
+      httpServer = new org.eclipse.jetty.server.Server(threadPool);
+      ServerConnector connector = new ServerConnector(httpServer);
       connector.setPort(portNum);
 
       // Linux:yes, Windows:no
@@ -93,7 +91,7 @@ public class ThriftHttpCLIService extends ThriftCLIService {
 
       TProtocolFactory protocolFactory = new TBinaryProtocol.Factory();
       TServlet thriftHttpServlet = new ThriftHttpServlet(processor, protocolFactory);
-      final Context context = new Context(httpServer, "/", Context.SESSIONS);
+      final ServletContextHandler context = new ServletContextHandler(httpServer, "/", ServletContextHandler.SESSIONS);
       context.addServlet(new ServletHolder(thriftHttpServlet), httpPath);
 
       // TODO: check defaults: maxTimeout, keepalive, maxBodySize, bodyRecieveDuration, etc.
