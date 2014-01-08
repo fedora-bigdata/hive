@@ -1129,9 +1129,7 @@ class RecordReaderImpl implements RecordReader {
     void seek(PositionProvider[] index) throws IOException {
       super.seek(index);
       for(TreeReader kid: fields) {
-        if (kid != null) {
-          kid.seek(index);
-        }
+        kid.seek(index);
       }
     }
 
@@ -1177,9 +1175,7 @@ class RecordReaderImpl implements RecordReader {
     void skipRows(long items) throws IOException {
       items = countNonNulls(items);
       for(TreeReader field: fields) {
-        if (field != null) {
-          field.skipRows(items);
-        }
+        field.skipRows(items);
       }
     }
   }
