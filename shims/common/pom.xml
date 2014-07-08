@@ -52,8 +52,14 @@
     </dependency>
     <dependency>
       <groupId>org.apache.hadoop</groupId>
-      <artifactId>hadoop-core</artifactId>
-      <version>${hadoop-20.version}</version>
+      <artifactId>hadoop-common</artifactId>
+      <version>${hadoop-23.version}</version>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-mapreduce-client-core</artifactId>
+      <version>${hadoop-23.version}</version>
       <optional>true</optional>
     </dependency>
     <dependency>
