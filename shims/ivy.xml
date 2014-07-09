@@ -39,7 +39,7 @@
     <dependency org="commons-logging" name="commons-logging-api" rev="${commons-logging-api.version}"
                 transitive="false"/>
     <dependency org="org.codehaus.jackson" name="jackson-core-asl" rev="${jackson.version}"/>
-    <dependency org="org.codehaus.jackson" name="jackson-mapper-asl" rev="${jackson.version}"/>
+    <dependency org="org.codehaus.jackson" name="jackson-mapper-asl" rev="${jackson.version}" transitive="false"/>
     <dependency org="log4j" name="log4j" rev="${log4j.version}" />
     <dependency org="com.google.guava" name="guava" rev="${guava.version}" transitive="false"/>
 
@@ -51,6 +51,7 @@
       <artifact name="hadoop-common" type="tests" ext="jar" m:classifier="tests"/>
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
+      <exclude org="org.codehaus.jackson" module="jackson-mapper-asl"/><!--bad POM-->
     </dependency>
     <dependency org="org.apache.hadoop" name="hadoop-mapreduce-client-core"
                 rev="${hadoop-0.23.version}"
@@ -58,6 +59,7 @@
       <include type="jar"/>
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
+      <exclude org="org.codehaus.jackson" module="jackson-mapper-asl"/><!--bad POM-->
     </dependency>
     <dependency org="org.apache.hadoop" name="hadoop-archives"
                 rev="${hadoop-0.23.version}"
@@ -65,6 +67,7 @@
       <include type="jar"/>
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
+      <exclude org="org.codehaus.jackson" module="jackson-mapper-asl"/><!--bad POM-->
     </dependency>
     <dependency org="org.apache.hadoop" name="hadoop-hdfs"
                 rev="${hadoop-0.23.version}"
@@ -73,6 +76,7 @@
       <artifact name="hadoop-hdfs" type="tests" ext="jar" m:classifier="tests"/>
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
+      <exclude org="org.codehaus.jackson" module="jackson-mapper-asl"/><!--bad POM-->
     </dependency>
     <dependency org="org.apache.hadoop" name="hadoop-hdfs-tests"
                 rev="${hadoop-0.23.version}"
@@ -84,6 +88,7 @@
       <artifact name="hadoop-mapreduce-client-jobclient" type="tests" ext="jar" m:classifier="tests"/>
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
+      <exclude org="org.codehaus.jackson" module="jackson-mapper-asl"/><!--bad POM-->
     </dependency>
     <dependency org="org.apache.hadoop" name="hadoop-mapreduce-client-jobclient-tests"
                 rev="${hadoop-0.23.version}"
@@ -94,6 +99,7 @@
       <include type="jar"/>
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
+      <exclude org="org.codehaus.jackson" module="jackson-mapper-asl"/><!--bad POM-->
     </dependency>
 
     <!-- jobclient tests dependency -->
@@ -103,13 +109,14 @@
       <artifact name="hadoop-mapreduce-client-jobclient" type="tests" ext="jar" m:classifier="tests"/>
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
+      <exclude org="org.codehaus.jackson" module="jackson-mapper-asl"/><!--bad POM-->
     </dependency>
     <dependency org="org.apache.hadoop" name="hadoop-yarn-server-tests"
                 rev="${hadoop-0.23.version}"
-                conf="hadoop0.23.shim->default">
-      <artifact name="hadoop-yarn-server-tests" type="tests" ext="jar" m:classifier="tests"/>
+                conf="hadoop0.23.shim->default" m:classifier="tests">
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
+      <exclude org="org.codehaus.jackson" module="jackson-mapper-asl"/><!--bad POM-->
     </dependency>
     <dependency org="org.apache.hadoop" name="hadoop-mapreduce-client-app"
                 rev="${hadoop-0.23.version}"
@@ -117,6 +124,7 @@
       <include type="jar"/>
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
+      <exclude org="org.codehaus.jackson" module="jackson-mapper-asl"/><!--bad POM-->
     </dependency>
     <dependency org="org.apache.hadoop" name="hadoop-mapreduce-client-hs"
                 rev="${hadoop-0.23.version}"
@@ -124,6 +132,7 @@
       <include type="jar"/>
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
+      <exclude org="org.codehaus.jackson" module="jackson-mapper-asl"/><!--bad POM-->
     </dependency>
 
     <!-- Hadoop 0.20 shim dependencies. Used for building 0.20 shims. -->
