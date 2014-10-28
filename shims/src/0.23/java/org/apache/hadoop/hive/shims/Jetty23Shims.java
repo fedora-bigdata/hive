@@ -19,7 +19,9 @@ package org.apache.hadoop.hive.shims;
 
 import java.io.IOException;
 
-import org.eclipse.jetty.server.ServerConnector;
+import org.eclipse.jetty.server.Connector;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.nio.SelectChannelConnector;
 import org.eclipse.jetty.server.handler.RequestLogHandler;
 import org.eclipse.jetty.webapp.WebAppContext;
 
@@ -47,7 +49,7 @@ public class Jetty23Shims implements JettyShims {
     public void setupListenerHostPort(String listen, int port)
         throws IOException {
 
-      ServerConnector connector = new ServerConnector(this);
+      Connector connector = new SelectChannelConnector();
       connector.setPort(port);
       connector.setHost(listen);
       this.addConnector(connector);

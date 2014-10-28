@@ -78,9 +78,6 @@
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.codehaus.jackson" module="jackson-mapper-asl"/><!--bad POM-->
     </dependency>
-    <dependency org="org.apache.hadoop" name="hadoop-hdfs-tests"
-                rev="${hadoop-0.23.version}"
-                conf="hadoop0.23.shim->default"/>
     <dependency org="org.apache.hadoop" name="hadoop-mapreduce-client-jobclient"
                 rev="${hadoop-0.23.version}"
                 conf="hadoop0.23.shim->default">
@@ -90,9 +87,6 @@
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.codehaus.jackson" module="jackson-mapper-asl"/><!--bad POM-->
     </dependency>
-    <dependency org="org.apache.hadoop" name="hadoop-mapreduce-client-jobclient-tests"
-                rev="${hadoop-0.23.version}"
-                conf="hadoop0.23.shim->default"/>
     <dependency org="org.apache.hadoop" name="hadoop-mapreduce-client-common"
                 rev="${hadoop-0.23.version}"
                 conf="hadoop0.23.shim->default">
