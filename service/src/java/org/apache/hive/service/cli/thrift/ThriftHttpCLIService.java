@@ -26,7 +26,8 @@ import org.apache.hive.service.cli.CLIService;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocolFactory;
 import org.apache.thrift.server.TServlet;
-import org.eclipse.jetty.server.ServerConnector;
+import org.eclipse.jetty.server.Connector;
+import org.eclipse.jetty.server.nio.SelectChannelConnector;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
@@ -78,8 +79,9 @@ public class ThriftHttpCLIService extends ThriftCLIService {
       QueuedThreadPool threadPool = new QueuedThreadPool();
       threadPool.setMinThreads(minWorkerThreads);
       threadPool.setMaxThreads(maxWorkerThreads);
-      httpServer = new org.eclipse.jetty.server.Server(threadPool);
-      ServerConnector connector = new ServerConnector(httpServer);
+      httpServer = new org.eclipse.jetty.server.Server();
+      httpServer.setThreadPool(threadPool);
+      SelectChannelConnector connector = new SelectChannelConnector();
       connector.setPort(portNum);
 
       // Linux:yes, Windows:no
