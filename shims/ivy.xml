@@ -48,7 +48,7 @@
                 rev="${hadoop-0.23.version}"
                 conf="hadoop0.23.shim->default">
       <artifact name="hadoop-common" ext="jar" />
-      <artifact name="hadoop-common" type="tests" ext="jar" m:classifier="tests"/>
+      <artifact name="hadoop-common" ext="jar" m:classifier="tests"/>
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.codehaus.jackson" module="jackson-mapper-asl"/><!--bad POM-->
@@ -73,7 +73,7 @@
                 rev="${hadoop-0.23.version}"
                 conf="hadoop0.23.shim->default">
       <artifact name="hadoop-hdfs" ext="jar" />
-      <artifact name="hadoop-hdfs" type="tests" ext="jar" m:classifier="tests"/>
+      <artifact name="hadoop-hdfs" ext="jar" m:classifier="tests"/>
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.codehaus.jackson" module="jackson-mapper-asl"/><!--bad POM-->
@@ -101,13 +101,6 @@
                 conf="hadoop0.23.shim->default" transitive="false">
       <artifact name="hadoop-mapreduce-client-jobclient" ext="jar" />
       <artifact name="hadoop-mapreduce-client-jobclient" type="tests" ext="jar" m:classifier="tests"/>
-      <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
-      <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
-      <exclude org="org.codehaus.jackson" module="jackson-mapper-asl"/><!--bad POM-->
-    </dependency>
-    <dependency org="org.apache.hadoop" name="hadoop-yarn-server-tests"
-                rev="${hadoop-0.23.version}"
-                conf="hadoop0.23.shim->default" m:classifier="tests">
       <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
       <exclude org="org.codehaus.jackson" module="jackson-mapper-asl"/><!--bad POM-->

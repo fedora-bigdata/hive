@@ -57,13 +57,6 @@
     <dependency org="jline" name="jline" rev="${jline.version}" transitive="false"/>
 
     <!-- Hack to get jobclient tests dependency in. -->
-    <dependency org="org.apache.hadoop" name="hadoop-yarn-server-tests"
-                rev="${hadoop-0.23.version}"
-                conf="hadoop23.test->default">
-      <artifact name="hadoop-yarn-server-tests" type="tests" ext="jar" m:classifier="tests"/>
-      <exclude org="commons-daemon" module="commons-daemon"/><!--bad POM-->
-      <exclude org="org.apache.commons" module="commons-daemon"/><!--bad POM-->
-    </dependency>
     <dependency org="org.apache.hadoop" name="hadoop-mapreduce-client-app"
                 rev="${hadoop-0.23.version}"
                 conf="hadoop23.test->default">
